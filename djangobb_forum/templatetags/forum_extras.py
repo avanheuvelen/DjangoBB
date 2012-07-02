@@ -271,9 +271,9 @@ def set_theme_style(user):
     selected_theme = '' 
     if user.is_authenticated():
         selected_theme = user.forum_profile.theme
-        theme_style = '<link rel="stylesheet" type="text/css" href="%(static_url)sdjangobb_forum/themes/%(theme)s/style.css" />' 
+        theme_style = '<link rel="stylesheet" type="text/less" href="%(static_url)sless/forum_%(theme)s.less" />' 
     else:
-        theme_style = '<link rel="stylesheet" type="text/css" href="%(static_url)sdjangobb_forum/themes/default/style.css" />'
+        theme_style = '<link rel="stylesheet" type="text/less" href="%(static_url)sless/forum.less" />'
         
     return theme_style % dict(
         static_url=settings.STATIC_URL,
