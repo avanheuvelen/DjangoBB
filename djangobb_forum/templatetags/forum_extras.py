@@ -253,9 +253,12 @@ def new_reports():
 
 
 @register.simple_tag
-def gravatar(email):
+def gravatar(email, **kwargs):
     if forum_settings.GRAVATAR_SUPPORT:
-        size = max(forum_settings.AVATAR_WIDTH, forum_settings.AVATAR_HEIGHT)
+        if kwargs.get('size'):
+            size = int(kwargs['size'])
+        else:
+            size = max(forum_settings.AVATAR_WIDTH, forum_settings.AVATAR_HEIGHT)
         url = "http://www.gravatar.com/avatar/%s?" % md5_constructor(email.lower()).hexdigest()
         url += urllib.urlencode({
             'size': size,
