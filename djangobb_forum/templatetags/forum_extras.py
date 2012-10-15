@@ -270,6 +270,7 @@ def gravatar(context, email, **kwargs):
         url += urllib.urlencode({
             'size': size,
             'default': forum_settings.GRAVATAR_DEFAULT,
+            'rating': 'r',
         })
         return url.replace('&', '&amp;')
     else:
