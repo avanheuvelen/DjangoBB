@@ -204,7 +204,7 @@ def misc(request):
             user = request.user
             PostTracking.objects.filter(user__id=user.id).update(last_read=datetime.now(), topics=None)
             messages.info(request, _("All topics marked as read."))
-            return HttpResponseRedirect(reverse('djangobb:index'))
+            return HttpResponseRedirect(reverse('index'))
 
         elif action == 'report':
             if request.GET.get('post_id', ''):
