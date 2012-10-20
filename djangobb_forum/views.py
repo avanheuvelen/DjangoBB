@@ -128,7 +128,7 @@ def search(request):
             except PostTracking.DoesNotExist:
                 last_read = None
             if last_read:
-                topics = topics.filter(last_post__updated__gte=last_read).all()
+                topics = topics.filter(last_post__created__gte=last_read).all()
             else:
                 #searching more than forum_settings.SEARCH_PAGE_SIZE in this way - not good idea :]
                 topics = [topic for topic in topics[:forum_settings.SEARCH_PAGE_SIZE] if forum_extras.has_unreads(topic, request.user)]
